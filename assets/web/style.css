@@ -1,0 +1,154 @@
+:root {
+    --primary-bg: #1f2937;
+    --secondary-bg: #374151;
+    --taskbar-bg: rgba(22, 29, 39, 0.8);
+    --text-color: #e5e7eb;
+    --accent-color: #60a5fa;
+    --border-color: #4b5563;
+    --font-inter: 'Inter', sans-serif;
+    --font-plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;
+    /* Rarity Colors */
+    --rarity-common: #607d8b; /* Gray */
+    --rarity-rare: #81d4fa; /* Light Blue */
+    --rarity-epic: #9c27b0; /* Purple */
+    --rarity-legendary: #ff9800; /* Orange */
+    --rarity-creator: #424242; /* Dark Gray */
+    --rarity-other: #424242; /* Dark Gray */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: var(--font-inter);
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+}
+
+* {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;
+}
+
+#game-container {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+#game-canvas {
+    flex-grow: 1;
+    width: 100%;
+    background-color: #555;
+    cursor: grab;
+}
+
+#taskbar {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--taskbar-bg);
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+#top-menu {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.menu-icon {
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: 2px solid transparent;
+}
+
+.menu-icon:hover {
+    background-color: var(--accent-color);
+}
+
+.menu-icon.selected {
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+}
+
+.menu-icon img {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Rarity styles */
+.menu-icon[data-rarity="Common"] { background-color: var(--rarity-common); }
+.menu-icon[data-rarity="Rare"] { background-color: var(--rarity-rare); }
+.menu-icon[data-rarity="Epic"] { background-color: var(--rarity-epic); }
+.menu-icon[data-rarity="Legendary"] { background-color: var(--rarity-legendary); }
+.menu-icon[data-rarity="Creator Series"], .menu-icon[data-rarity="Other"] { background-color: var(--rarity-creator); }
+
+/* Cannot afford overlay */
+.menu-icon.cannot-afford::after {
+    content: 'X';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+#status-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    font-family: var(--font-plus-jakarta-sans);
+}
+
+.status-item {
+    padding: 0 0.5rem;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+}
+
+.status-item:last-child {
+    border-right: none;
+}
+
+.status-item .value {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.status-item .change {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+}

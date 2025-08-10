@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D City Simulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        <div id="taskbar">
+            <div id="top-menu">
+                </div>
+            
+            <div id="status-bar">
+                <div id="time-display" class="status-item">
+                    <span id="current-time"></span>
+                </div>
+                <div id="money-display" class="status-item">
+                    <span class="value"></span>
+                    <span class="change"></span>
+                </div>
+                <div id="city-name" class="status-item">
+                    <span id="city-name-text"></span>
+                </div>
+                <div id="population-display" class="status-item">
+                    <span class="value"></span>
+                    <span class="change"></span>
+                </div>
+                <div id="happiness-bar" class="status-item">
+                    <div class="bar-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

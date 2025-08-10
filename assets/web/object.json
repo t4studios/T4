@@ -1,0 +1,109 @@
+[
+    {
+      "id": "road_one_lane_basic",
+      "name": "One Lane Basic Road",
+      "description": "Connects your city. Common roads.",
+      "version": "1.0",
+      "tags": ["road", "transport"],
+      "author": "T4Studios, Official",
+      "rarity": "Common",
+      "value": 80,
+      "textureId": "1.png",
+      "cost": 400
+    },
+    {
+      "id": "road_one_lane_oneway",
+      "name": "One Lane Basic Road (One Way)",
+      "description": "Connects your city in one direction. Common roads.",
+      "version": "1.0",
+      "tags": ["road", "transport"],
+      "author": "T4Studios, Official",
+      "rarity": "Common",
+      "value": 80,
+      "textureId": "2.png",
+      "cost": 400
+    },
+    {
+      "id": "road_two_lane_basic",
+      "name": "Two Lane Basic Road",
+      "description": "Wider road for more traffic. Common roads.",
+      "version": "1.0",
+      "tags": ["road", "transport"],
+      "author": "T4Studios, Official",
+      "rarity": "Common",
+      "value": 160,
+      "textureId": "3.png",
+      "cost": 800
+    },
+    {
+      "id": "road_two_lane_oneway",
+      "name": "Two Lane Basic Road (One Way)",
+      "description": "Wider one-way road. Common roads.",
+      "version": "1.0",
+      "tags": ["road", "transport"],
+      "author": "T4Studios, Official",
+      "rarity": "Common",
+      "value": 160,
+      "textureId": "4.png",
+      "cost": 800
+    },
+    {
+      "id": "road_three_lane_basic",
+      "name": "Three Lane Basic Road",
+      "description": "Large road for significant traffic. Common roads.",
+      "version": "1.0",
+      "tags": ["road", "transport"],
+      "author": "T4Studios, Official",
+      "rarity": "Common",
+      "value": 240,
+      "textureId": "5.png",
+      "cost": 1200
+    },
+    {
+      "id": "road_three_lane_oneway",
+      "name": "Three Lane Basic Road (One Way)",
+      "description": "Large one-way road. Common roads.",
+      "version": "1.0",
+      "tags": ["road", "transport"],
+      "author": "T4Studios, Official",
+      "rarity": "Common",
+      "value": 240,
+      "textureId": "6.png",
+      "cost": 1200
+    },
+    {
+      "id": "road_four_lane_basic",
+      "name": "Four Lane Basic Road",
+      "description": "Main highway for the city. Common roads.",
+      "version": "1.0",
+      "tags": ["road", "transport"],
+      "author": "T4Studios, Official",
+      "rarity": "Common",
+      "value": 320,
+      "textureId": "7.png",
+      "cost": 1600
+    },
+    {
+      "id": "road_four_lane_oneway",
+      "name": "Four Lane Basic Road (One Way)",
+      "description": "Main highway for the city, one-way. Common roads.",
+      "version": "1.0",
+      "tags": ["road", "transport"],
+      "author": "T4Studios, Official",
+      "rarity": "Common",
+      "value": 320,
+      "textureId": "8.png",
+      "cost": 1600
+    },
+    {
+      "id": "residential_zone",
+      "name": "Residential Zone Grid",
+      "description": "Area for citizens to live. Free to place.",
+      "version": "1.0",
+      "tags": ["residential", "zone"],
+      "author": "T4Studios, Official",
+      "rarity": "Other",
+      "value": 0,
+      "cost": 0
+    }
+  ]
