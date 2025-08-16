@@ -124,7 +124,7 @@
         "tag": "save_100",
         "achievement_type": "multi_task",
         "description": "Click Save Progress after reaching exactly 100 clicks.",
-        "trophy_reward": 5,
+        "trophy_reward": 10,
         "steps": [
             {
                 "description": "Reach exactly 100 clicks.",
@@ -141,7 +141,7 @@
         "tag": "load_1000",
         "achievement_type": "multi_task",
         "description": "Load game with exactly 1,000 clicks.",
-        "trophy_reward": 5,
+        "trophy_reward": 10,
         "steps": [
             {
                 "description": "Reach exactly 1,000 clicks.",

@@ -1,0 +1,50 @@
+License Agreement
+
+Effective Date: August 16, 2025
+
+Owner: T4 Studios, T4
+
+1. Grant of License
+This document outlines a non-exclusive, non-transferable license granted by T4 Studios, T4 ("Owner") to the user ("Licensee") for the use of Google Docs documents created, distributed, or managed by the Owner. This license permits the Licensee to access, view, and interact with the specified Google Docs files under the terms and conditions set forth herein.
+
+2. Permitted Use
+The Licensee is permitted to:
+
+Access and view the content of Google Docs files provided by the Owner.
+
+Make edits or additions to the documents only if explicitly granted editing permissions by the Owner.
+
+Share documents with others only if explicitly granted sharing permissions by the Owner.
+
+Use the documents for the intended purpose as communicated by the Owner.
+
+3. Restrictions
+The Licensee shall not directly or indirectly:
+
+Redistribute, sell, lease, sublicense, or otherwise transfer any Google Docs files or their content without the express written consent of the Owner.
+
+Remove, alter, or obscure any copyright, trademark, or other proprietary rights notices from the documents.
+
+Use the documents for any unlawful purpose or in any way that violates applicable laws or regulations.
+
+Attempt to bypass any security or access controls implemented by the Owner for the documents.
+
+Claim ownership or authorship of the documents or their content, unless explicitly created by the Licensee within the scope of permitted use and with the Owner's knowledge.
+
+4. Ownership and Intellectual Property
+All Rights Reserved. The Owner retains all rights, title, and interest in and to the Google Docs documents, including all intellectual property rights therein. This license grants no ownership rights to the Licensee.
+
+5. Disclaimer of Warranty
+The Google Docs documents are provided "as is" without warranty of any kind, either express or implied, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose, or non-infringement. The Owner does not warrant that the documents will be error-free or that access thereto will be uninterrupted.
+
+6. Limitation of Liability
+In no event shall the Owner be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of these documents, even if advised of the possibility of such damage.
+
+7. Termination
+This license is effective until terminated by the Owner. The Owner may terminate this license at any time, with or without cause, by revoking access to the Google Docs documents. Upon termination, the Licensee must cease all use of the documents.
+
+8. Governing Law
+This License Agreement shall be governed by and construed in accordance with the laws of the jurisdiction of the Owner, without regard to its conflict of law principles.
+
+IMPORTANT NOTE:
+This document is a conceptual license for internal or informal use by T4 Studios, T4. It is not an official, legally binding document recognized or legalized by any government or legal authority. It is intended for illustrative purposes and does not constitute legal advice.
