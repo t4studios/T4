@@ -1,11 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=assets/web/index.html">
-    <title>City Simulator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Clicker</title>
+    <link rel="stylesheet" href="galaxy_clicker/assets/web/css/ui.css">
+    <link rel="stylesheet" href="galaxy_clicker/assets/web/css/options.css">
+    <link rel="stylesheet" href="galaxy_clicker/assets/web/css/stats.css">
+    <link rel="stylesheet" href="galaxy_clicker/assets/web/css/achievements.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 </head>
+
 <body>
-    <p>If you are not redirected automatically, follow this <a href="assets/web/index.html">link to the game</a>.</p>
+
+    <div id="loading-screen">
+        <div class="loading-content">
+            <h1 class="loading-title">Galaxy Clicker</h1>
+            <div class="loading-progress-container">
+                <div id="loading-progress-bar" class="loading-progress-bar"></div>
+            </div>
+            <p id="loading-description" class="loading-description">Generating star charts...</p>
+        </div>
+    </div>
+
+    <div id="achievement-toast" class="achievement-toast hidden">
+        <div class="achievement-icon">
+            <span class="material-icons_round">emoji_events</span>
+        </div>
+        <div class="achievement-text">
+            <p class="achievement-title">Achievement Unlocked!</p>
+            <p id="achievement-name" class="achievement-name">Beginner Clicks</p>
+            <p id="achievement-trophies" class="achievement-trophies">+10 Trophies</p>
+        </div>
+        <button id="view-achievements-btn" class="view-achievements-btn">View Achievements</button>
+    </div>
+
+    <div id="player-trophies" class="player-trophies">
+        <span class="material-icons_round trophy-icon">emoji_events</span>
+        <span id="trophy-count">0</span>
+        <span id="trophy-animation" class="trophy-animation hidden"></span>
+    </div>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <div id="status-bubbles-container">
+        <div id="fps-counter" class="status-bubble hidden">FPS: 60</div>
+        <div id="performance-mode-indicator" class="status-bubble hidden">Performance Mode</div>
+        <div id="overloaded-indicator" class="status-bubble hidden">Overloaded!</div>
+        <div id="cheating-indicator" class="status-bubble hidden">Cheating Detected!</div>
+    </div>
+
+    <div class="game-container">
+        <h1 id="click-count">0</h1>
+        <div id="clicker-circle"></div>
+        <p class="stats-text"><span id="cps-display-label">Clicks Per Second (CPS):</span> <span id="cps-display">0</span></p>
+    </div>
+
+    <div id="custom-context-menu" class="hidden">
+        <div class="menu-section">
+            <div class="menu-option" id="save-option">Save Progress</div>
+            <div class="menu-option" id="reset-option">Reset Progress</div>
+        </div>
+        <div class="menu-separator"></div>
+        <div class="menu-section">
+            <div class="menu-option" id="stats-option">My Stats</div>
+            <div class="menu-option" id="achievements-option">My Achievements</div>
+        </div>
+        <div class="menu-separator"></div>
+        <div class="menu-section">
+            <div class="menu-option" id="options-option">Options</div>
+            <div class="menu-option" id="rules-option">Rules</div>
+        </div>
+        <div class="menu-separator"></div>
+        <div class="menu-option disabled-option" id="about-option">About (v1.01)</div>
+    </div>
+
+    <div id="save-toast" class="save-toast-container hidden">
+        <span class="material-icons_round">cloud_done</span>
+        Progress Saved!
+    </div>
+
+    <div id="confirmation-modal" class="modal-backdrop hidden">
+        <div class="modal-content">
+            <h2 class="modal-title">Are you sure you want to reset your progress?</h2>
+            <div class="modal-score">
+                <p>This is your score:</p>
+                <h3 id="modal-score-display" class="score-display">0</h3>
+            </div>
+            <p class="modal-warning">Your saved stuff will be permanently gone and you will start over.</p>
+            <p class="modal-confirmation-text">By clicking continue, I agree to reset my progress and start over the clicks.</p>
+            <div class="modal-buttons">
+                <button id="modal-continue" class="modal-button primary">Continue</button>
+                <button id="modal-cancel" class="modal-button secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="stats-modal" class="modal-backdrop hidden">
+        <div class="modal-content stats-content">
+            <h2 class="modal-title">My Stats</h2>
+            <div class="stats-close-btn">
+                <span id="stats-close" class="material-icons_round">close</span>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="material-icons_round stat-icon">timer</span>
+                    <p class="stat-label">Time Played</p>
+                    <div id="time-played" class="stat-value">
+                        00 : 00 : 00 : 00
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="material-icons_round stat-icon">mouse</span>
+                    <p class="stat-label">Total Clicks</p>
+                    <div class="stat-value">
+                        <span id="total-clicks">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="material-icons_round stat-icon">trending_up</span>
+                    <p class="stat-label">Total Clicks per Second</p>
+                    <p id="stats-cps" class="stat-value">0</p>
+                </div>
+            </div>
+            <div class="stats-graph-container">
+                <div class="stats-graph-header">
+                    <p class="stat-label">Clicks Graph</p>
+                    <div class="graph-options">
+                        <div class="dropdown">
+                            <button class="dropdown-button type-dropdown">
+                                Type: <span id="type-text">Clicks</span>
+                                <span class="material-icons_round">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-menu hidden type-menu">
+                                <div class="dropdown-item" data-type="clicks">Clicks</div>
+                                <div class="dropdown-item" data-type="cps">Total Clicks per Second</div>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropdown-button sort-dropdown">
+                                Sort By: <span id="sort-by-text">Last 24h</span>
+                                <span class="material-icons_round">arrow_drop_down</span>
+                            </button>
+                            <div class="dropdown-menu hidden sort-menu">
+                                <div class="dropdown-item" data-sort="24h">Last 24h</div>
+                                <div class="dropdown-item" data-sort="7d">Last 7 Days</div>
+                                <div class="dropdown-item" data-sort="30d">Last 30 Days</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="clicks-graph"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="achievements-modal" class="modal-backdrop hidden">
+        <div class="modal-content achievements-content">
+            <div class="achievements-header">
+                <div>
+                    <h2 class="modal-title">My Achievements</h2>
+                    <p id="achievement-collected-info" class="achievement-collected-info"></p>
+                </div>
+                <div class="achievements-options">
+                    <div class="dropdown">
+                        <button class="dropdown-button sort-achievements-dropdown">
+                            Sort By: <span id="sort-achievements-text">Default</span>
+                            <span class="material-icons_round">arrow_drop_down</span>
+                        </button>
+                        <div id="sort-achievements-menu" class="dropdown-menu hidden sort-achievements-menu">
+                            <div class="dropdown-item" data-sort="default">Default</div>
+                            <div class="dropdown-item" data-sort="unlocked">Unlocked</div>
+                            <div class="dropdown-item" data-sort="locked">Locked</div>
+                            <div class="dropdown-item" data-sort="title-asc">Achievement A-Z</div>
+                            <div class="dropdown-item" data-sort="title-desc">Achievement Z-A</div>
+                            <div class="dropdown-item" data-sort="progress">Progress</div>
+                            <div class="dropdown-item" data-sort="trophies-desc">Trophies</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-close-btn">
+                    <span id="achievements-close" class="material-icons_round">close</span>
+                </div>
+            </div>
+            <div id="achievement-list" class="achievement-list">
+            </div>
+        </div>
+    </div>
+
+    <div id="settings-modal" class="modal-backdrop hidden">
+        <div class="modal-content stats-content">
+            <h2 class="modal-title">Settings</h2>
+            <div class="stats-close-btn">
+                <span id="settings-close" class="material-icons_round">close</span>
+            </div>
+            <div id="settings-options-container" class="settings-options">
+                <button id="reset-options-btn" class="modal-button primary">Reset All Options</button>
+                <button id="cancel-reset-options-btn" class="modal-button secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="tutorial-modal" class="modal-backdrop hidden">
+        <div class="modal-content tutorial-content">
+            <button class="close-btn" id="tutorial-close-btn">&times;</button>
+            <h2 class="modal-title">Welcome to Galaxy Clicker!</h2>
+            <p>Your goal is to click the galaxy in the center of the screen to earn clicks. The more you click, the higher your score and the more you achieve!</p>
+            <p>You can access your stats, achievements, and settings by right-clicking anywhere on the screen.</p>
+            <button id="tutorial-continue-btn" class="modal-button primary animated-button">View Rules and Continue</button>
+        </div>
+    </div>
+
+    <div id="rules-modal" class="modal-backdrop hidden">
+        <div class="modal-content tutorial-content">
+            <button class="close-btn" id="rules-close-btn">&times;</button>
+            <h2 class="modal-title">Rules of the Galaxy</h2>
+            <ul id="rules-list" class="rules-list"></ul>
+            <button id="rules-continue-btn" class="modal-button primary animated-button disabled" disabled>Continue</button>
+        </div>
+    </div>
+
+    <div id="confirm-reset-options-modal" class="modal-backdrop hidden">
+        <div class="modal-content">
+            <h2 class="modal-title">Reset All Options?</h2>
+            <p class="modal-warning">This will reset all your settings to their default values. This action cannot be undone.</p>
+            <div class="modal-buttons">
+                <button id="reset-options-continue" class="modal-button primary">Continue</button>
+                <button id="reset-options-cancel" class="modal-button secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop hidden" id="cps-limit-warning-modal">
+        <div class="modal-content warning-modal-content">
+            <h3 class="modal-title">WARNING: CPS Limit Exceeded!</h3>
+            <p class="modal-description">You have consistently exceeded the set CPS limit. Please adjust your settings or restart the game.</p>
+            <div class="modal-buttons">
+                <button class="modal-button secondary" id="cps-warning-update-settings-btn">Update Settings</button>
+                <button class="modal-button primary" id="cps-warning-restart-btn">Restart Game</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio-player" style="display: none;"></audio>
+    <audio id="click-sound" preload="auto" style="display: none;"></audio>
+    <audio id="achievement-success-sound" preload="auto" style="display: none;"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="galaxy_clicker/assets/web/js/game.js"></script>
+    <script type="module" src="galaxy_clicker/assets/web/js/stats.js"></script>
+    <script type="module" src="galaxy_clicker/assets/web/js/achievements.js"></script>
+    <script type="module" src="galaxy_clicker/assets/web/js/options.js"></script>
+    <script type="module" src="galaxy_clicker/assets/web/js/tutorial.js"></script>
+    <script type="module" src="galaxy_clicker/assets/web/js/rules.js"></script>
 </body>
+
 </html>

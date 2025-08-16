@@ -1,0 +1,189 @@
+[
+    {
+        "title": "Beginner!",
+        "tag": "beginner",
+        "achievement_type": "clicks",
+        "description": "Reached 100 total clicks.",
+        "unlock_threshold": 100,
+        "trophy_reward": 10
+    },
+    {
+        "title": "Becoming A Pro!",
+        "tag": "pro",
+        "achievement_type": "clicks",
+        "description": "Reached 1,000 total clicks.",
+        "unlock_threshold": 1000,
+        "trophy_reward": 20
+    },
+    {
+        "title": "Expert Player!",
+        "tag": "expert",
+        "achievement_type": "clicks",
+        "description": "Reached 10,000 total clicks.",
+        "unlock_threshold": 10000,
+        "trophy_reward": 30
+    },
+    {
+        "title": "Clicker Elite",
+        "tag": "elite",
+        "achievement_type": "clicks",
+        "description": "Reached 50,000 total clicks.",
+        "unlock_threshold": 50000,
+        "trophy_reward": 40
+    },
+    {
+        "title": "Marathon Clicker",
+        "tag": "marathon",
+        "achievement_type": "clicks",
+        "description": "Reached 100,000 total clicks.",
+        "unlock_threshold": 100000,
+        "trophy_reward": 50
+    },
+    {
+        "title": "Galactic Champion",
+        "tag": "galactic_champion",
+        "achievement_type": "clicks",
+        "description": "Reached 500,000 total clicks.",
+        "unlock_threshold": 500000,
+        "trophy_reward": 70
+    },
+    {
+        "title": "Hyperclicker",
+        "tag": "hyperclicker",
+        "achievement_type": "clicks",
+        "description": "Reached 1,000,000 total clicks.",
+        "unlock_threshold": 1000000,
+        "trophy_reward": 80
+    },
+    {
+        "title": "Unstoppable Force",
+        "tag": "unstoppable",
+        "achievement_type": "clicks",
+        "description": "Reached 5,000,000 total clicks.",
+        "unlock_threshold": 5000000,
+        "trophy_reward": 90
+    },
+    {
+        "title": "Cosmic Lord",
+        "tag": "cosmic_lord",
+        "achievement_type": "clicks",
+        "description": "Reached 10,000,000 total clicks.",
+        "unlock_threshold": 10000000,
+        "trophy_reward": 100
+    },
+    {
+        "title": "The Billionaire",
+        "tag": "billionaire",
+        "achievement_type": "clicks",
+        "description": "Reached 1,000,000,000 total clicks.",
+        "unlock_threshold": 1000000000,
+        "trophy_reward": 100
+    },
+    {
+        "title": "Becoming Experienced with Trial!",
+        "tag": "time_1h",
+        "achievement_type": "time",
+        "description": "Play the game for longer than 1 hour.",
+        "unlock_threshold": 3600000,
+        "trophy_reward": 20
+    },
+    {
+        "title": "All Nighter!",
+        "tag": "time_24h",
+        "achievement_type": "time",
+        "description": "Play the game for 24 hours.",
+        "unlock_threshold": 86400000,
+        "trophy_reward": 20
+    },
+    {
+        "title": "Expertise Player!",
+        "tag": "time_7d",
+        "achievement_type": "time",
+        "description": "Play the game for longer than 7 days.",
+        "unlock_threshold": 604800000,
+        "trophy_reward": 30
+    },
+    {
+        "title": "Instant Spammer!",
+        "tag": "cps_5",
+        "achievement_type": "cps",
+        "description": "Reach Clicks per Second to hit 5 or above.",
+        "unlock_threshold": 5,
+        "trophy_reward": 10
+    },
+    {
+        "title": "Double Digits!",
+        "tag": "cps_10",
+        "achievement_type": "cps",
+        "description": "Reach Clicks per Second to hit 10 or above.",
+        "unlock_threshold": 10,
+        "trophy_reward": 10
+    },
+    {
+        "title": "Game-a-saver!",
+        "tag": "save_100",
+        "achievement_type": "multi_task",
+        "description": "Click Save Progress after reaching exactly 100 clicks.",
+        "trophy_reward": 5,
+        "steps": [
+            {
+                "description": "Reach exactly 100 clicks.",
+                "status": "locked"
+            },
+            {
+                "description": "Click 'Save Progress' to unlock.",
+                "status": "locked"
+            }
+        ]
+    },
+    {
+        "title": "Refresh-a-saver!",
+        "tag": "load_1000",
+        "achievement_type": "multi_task",
+        "description": "Load game with exactly 1,000 clicks.",
+        "trophy_reward": 5,
+        "steps": [
+            {
+                "description": "Reach exactly 1,000 clicks.",
+                "status": "locked"
+            },
+            {
+                "description": "Click 'Save Progress'.",
+                "status": "locked"
+            },
+            {
+                "description": "Reload the page to unlock.",
+                "status": "locked"
+            }
+        ]
+    },
+    {
+        "title": "Life is a virtue!",
+        "tag": "save_load_512",
+        "achievement_type": "multi_task",
+        "description": "Click Save Progress and reload after reaching exactly 512 clicks.",
+        "trophy_reward": 20,
+        "steps": [
+            {
+                "description": "Reach exactly 512 clicks.",
+                "status": "locked"
+            },
+            {
+                "description": "Click 'Save Progress'.",
+                "status": "locked"
+            },
+            {
+                "description": "Reload the page to unlock.",
+                "status": "locked"
+            }
+        ]
+    },
+    {
+        "title": "A secret is now exposed!",
+        "tag": "secret_512_512",
+        "achievement_type": "secret",
+        "description": "Reach exactly 512 clicks and play on 5/12.",
+        "unlock_threshold": 512,
+        "trophy_reward": 30
+    }
+]

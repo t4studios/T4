@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Plus+Jakarta+Sans:ital,wght@0,700;1,700&display=swap');
+
+/* Achievements Modal */
+.achievements-content {
+    max-width: 800px;
+    max-height: 70vh;
+    padding: 20px 40px;
+}
+
+.achievements-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+    text-align: left;
+}
+
+.achievements-header .modal-title {
+    margin: 0;
+    text-align: left;
+}
+
+/* New CSS for achievement counts */
+.achievement-counts {
+    display: flex;
+    flex-direction: column;
+}
+
+.achievement-collected-info {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-style: italic;
+    color: #888;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    opacity: 0.6;
+    margin: 0;
+    text-align: left;
+}
+
+.trophy-info {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #444;
+    gap: 5px;
+    margin: 5px 0 0;
+}
+
+.trophy-info .trophy-icon {
+    font-size: 1rem;
+    color: #ffd700;
+}
+
+.achievements-options {
+    margin-left: auto;
+}
+
+.achievement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    max-height: calc(70vh - 120px);
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.achievement-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+    background-color: #1a1e24;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.achievement-card.unlocked {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+}
+
+.achievement-card.locked {
+    filter: grayscale(100%);
+    opacity: 0.7;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.achievement-trophy-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    text-align: center;
+}
+
+.achievement-trophy-count .trophy-value {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffd700;
+    line-height: 1;
+}
+
+.achievement-trophy-count .trophy-icon {
+    font-size: 1.5rem;
+    color: #ffd700;
+}
+
+.achievement-details {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.achievement-title-card {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.achievement-card.unlocked .achievement-title-card {
+    color: var(--primary-color);
+}
+
+.achievement-description {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.achievement-progress {
+    width: 250px;
+    min-width: 150px;
+}
+
+.progress-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.progress-bar-container {
+    height: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: width 0.5s ease-out;
+}
+
+.achievement-card.unlocked .progress-bar {
+    background-color: #ffd700;
+}
+
+/* Multi-task Achievement Steps */
+.achievement-steps-container {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.achievement-step {
+    font-size: 0.9rem;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.achievement-step .material-icons_round {
+    font-size: 1.1rem;
+}
+
+.achievement-step.completed {
+    color: #90ee90;
+}
+
+.achievement-step.current {
+    color: #fff;
+    font-weight: 700;
+}
+
+.achievement-step.current .material-icons_round {
+    color: #ffd700;
+    animation: pulse-yellow 1.5s infinite;
+}
+
+.achievement-step.completed .material-icons_round {
+    color: #90ee90;
+}
+
+.achievement-step.locked .material-icons_round {
+    color: #555;
+}
+
+.unlocked-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffd700;
+    text-align: center;
+    display: block;
+    text-shadow: 0 0 5px #ffd700;
+}
+
+@keyframes pulse-yellow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(255, 215, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
