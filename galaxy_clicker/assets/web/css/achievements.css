@@ -4,15 +4,70 @@
 /* Achievements Modal */
 .achievements-content {
     max-width: 800px;
-    max-height: 70vh;
+    max-height: 90vh; /* Adjust height to accommodate new UI sections */
     padding: 20px 40px;
+    display: flex; /* Use flexbox for main content layout */
+    flex-direction: column;
+}
+
+/* New: Profile section at the top */
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-icon-container {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-icon {
+    font-size: 36px;
+    color: #000;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.profile-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.profile-details {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 5px;
+}
+
+.profile-details.device-id {
+    color: #666; /* Gray text for device ID */
+}
+
+.profile-details.achievement-stats {
+    font-style: italic; /* Italic text for achievement stats */
 }
 
 .achievements-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     flex-wrap: wrap;
     gap: 10px;
     text-align: left;
@@ -64,9 +119,8 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-top: 20px;
-    max-height: calc(70vh - 120px);
-    overflow-y: auto;
+    flex-grow: 1; /* Allow the list to take up remaining space */
+    overflow-y: auto; /* Enable scrolling for the list */
     padding-right: 15px;
 }
 

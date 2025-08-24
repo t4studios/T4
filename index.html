@@ -40,6 +40,7 @@
         <button id="view-achievements-btn" class="view-achievements-btn">View Achievements</button>
     </div>
 
+    
     <div id="player-trophies" class="player-trophies">
         <span class="material-icons_round trophy-icon">emoji_events</span>
         <span id="trophy-count">0</span>
@@ -77,7 +78,7 @@
             <div class="menu-option" id="rules-option">Rules</div>
         </div>
         <div class="menu-separator"></div>
-        <div class="menu-option disabled-option" id="about-option">About (v1.01)</div>
+        <div class="menu-option disabled-option" id="about-option">About (v1.10)</div>
     </div>
 
     <div id="save-toast" class="save-toast-container hidden">
@@ -162,11 +163,67 @@
 
     <div id="achievements-modal" class="modal-backdrop hidden">
         <div class="modal-content achievements-content">
-            <div class="achievements-header">
-                <div>
-                    <h2 class="modal-title">My Achievements</h2>
-                    <p id="achievement-collected-info" class="achievement-collected-info"></p>
+            <div class="profile-section">
+                <div class="profile-icon-container">
+                    <i class="material-icons_round profile-icon">person</i>
                 </div>
+                <div class="profile-info">
+                    <p class="profile-name">Player Name</p>
+                    <p class="profile-details device-id">
+                        <span id="encrypted-device-id">############</span>
+                        <span id="device-id-display" class="hidden"></span>
+                    </p>
+                    <button id="show-device-id-code-btn" class="modal-button primary">View Device ID</button>
+                </div>
+            </div>
+            
+            <div id="device-id-modal" class="modal-backdrop hidden">
+                <div class="modal-content">
+                    <button id="close-device-id-modal" class="close-btn">
+                        <i class="material-icons_round">close</i>
+                    </button>
+                    <h2 class="modal-title">Device ID Validation</h2>
+                    <p>To view your Device ID, you must first enter the correct 6-digit code.</p>
+                    <div class="input-group">
+                        <p>Your code is: <span id="validation-code-display" class="score-display"></span></p>
+                        <button id="copy-code-btn" class="modal-button secondary">Copy Code</button>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="validation-input" placeholder="Enter the 6-digit code">
+                    </div>
+                    <div class="modal-buttons">
+                        <button id="submit-validation-btn" class="modal-button primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="status-toast" class="status-toast hidden">
+                <span id="toast-message"></span>
+            </div>
+
+            
+            
+            <style>
+                .hidden {
+                    display: none;
+                }
+                .input-group {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    margin-top: 15px;
+                }
+                #validation-input {
+                    padding: 10px;
+                    border-radius: 5px;
+                    border: 1px solid #333;
+                    background-color: #0d1117;
+                    color: #fff;
+                }
+            </style>
+            <div class="achievements-header">
+                <h2 class="modal-title">Achievements</h2>
                 <div class="achievements-options">
                     <div class="dropdown">
                         <button class="dropdown-button sort-achievements-dropdown">

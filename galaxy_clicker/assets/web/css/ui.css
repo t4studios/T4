@@ -862,75 +862,466 @@ body.animated-squares::before {
     color: var(--primary-color);
 }
 
-/* ... (existing CSS) ... */
+/* Custom Confirmation Modal Styles */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    overflow-y: auto;
+}
 
-/* Close Button Universal Style */
+.modal-content {
+    background-color: #1a1e24;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    animation: fade-in-bottom 0.3s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
 .close-btn {
     position: absolute;
     top: 10px;
-    right: 15px;
-    font-size: 2rem;
-    color: #fff;
+    right: 10px;
     background: none;
     border: none;
+    color: #fff;
     cursor: pointer;
-    line-height: 1;
-    transition: transform 0.2s ease, color 0.2s ease;
+    font-size: 1.5rem;
 }
 
-.close-btn:hover {
-    color: var(--primary-color);
-    transform: scale(1.1) rotate(90deg);
+.hidden {
+    display: none;
 }
 
-/* Tutorial Modal Specific Styles */
-.tutorial-content {
-    max-width: 500px;
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
 }
 
-.tutorial-content p {
+#validation-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #0d1117;
+    color: #fff;
+}
+
+/* Status Toast UI */
+.status-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    line-height: 1.5;
-    color: #ccc;
-    margin-bottom: 20px;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 5000;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
 }
 
-.tutorial-content h2 {
+.status-toast.hidden {
+    display: none;
+}
+
+.status-toast.success {
+    background-color: #28a745;
+    border: 1px solid #218838;
+    opacity: 1;
+}
+
+.status-toast.failure {
+    background-color: #dc3545;
+    border: 1px solid #c82333;
+    opacity: 1;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: #1a1e24;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    animation: fade-in-bottom 0.3s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#validation-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #0d1117;
+    color: #fff;
+}
+
+/* Player Marketplace Display */
+.player-marketplace {
+    position: fixed;
+    top: 20px;
+    right: 110px; /* Position it on the right side */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 2rem;
-    color: var(--primary-color);
+    font-weight: 700;
+    color: #fff;
+    z-index: 4000;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
-/* Rules Modal Specific Styles */
-.rules-list {
-    max-height: 300px; /* Limits the height of the list */
-    overflow-y: auto; /* Enables vertical scrolling */
-    list-style-type: none;
-    padding: 0 10px;
-    margin: 20px 0;
+.player-marketplace:hover {
+    transform: scale(1.05);
+}
+
+.market-icon {
+    color: #ffd700; /* You can change this to a different color if you like */
+    font-size: 1.2rem;
+    animation: trophy-bounce 2s infinite ease-in-out; /* Uses the same animation as the trophy */
+}
+
+/* Marketplace Modal Styles */
+.marketplace-content {
+    background-color: #1a1e24;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: fade-in-bottom 0.3s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.marketplace-section {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.section-divider {
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 30px 0;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.market-item {
+    background-color: #212529;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.market-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.item-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.item-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0;
+    color: #fff;
+}
+
+.item-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+    color: #ffd700;
+}
+
+.price-icon {
+    font-size: 1rem;
+    color: #ffd700;
+}
+
+.price-value {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.reset-timer {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: 20px;
+}
+
+.reset-timer span {
+    font-weight: 700;
+    color: #fff;
+}
+
+/* New: Top-Right UI Container */
+.top-right-ui-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: row-reverse; /* Reverses the order of children to align from right to left */
+    align-items: center;
+    gap: 10px; /* Spacing between buttons */
+    z-index: 4000;
+}
+
+/* My Missions Button */
+.player-missions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.player-missions:hover {
+    transform: scale(1.05);
+}
+
+.missions-icon {
+    font-size: 1.2rem;
+    color: #4CAF50;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+/* Player Coins Display */
+.player-coins {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: #fff;
+}
+
+.coins-icon {
+    font-size: 1.2rem;
+    color: #ffd700;
+}
+
+/* My Missions Modal UI */
+.missions-content {
+    background-color: #1a1e24;
+    max-width: 600px;
+}
+
+.missions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mission-card {
+    background-color: #212529;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mission-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.mission-icon {
+    font-size: 2.5rem;
+    color: #4CAF50;
+}
+
+.nightmare-mission {
+    border: 2px solid #ff4d4d; /* Demon red outline */
+}
+
+.nightmare-mission .mission-icon {
+    color: #ff4d4d;
+    animation: bounce 2s infinite ease-in-out; /* Bouncing skull icon */
+}
+
+.mission-details {
+    flex-grow: 1;
     text-align: left;
 }
 
-.rules-list .rule-item {
-    padding: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.rules-list .rule-item:last-child {
-    border-bottom: none;
-}
-
-.rules-list .rule-title {
+.mission-name {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.2rem;
     font-weight: 700;
-    color: var(--primary-color);
+    font-size: 1.1rem;
     margin: 0 0 5px 0;
 }
 
-.rules-list .rule-description {
+.mission-description {
     font-size: 0.9rem;
-    color: #ccc;
+    color: #aaa;
     margin: 0;
-    line-height: 1.4;
+}
+
+.mission-progress-container {
+    background-color: #0d1117;
+    border-radius: 50px;
+    height: 8px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mission-progress-bar {
+    background-color: #4CAF50;
+    height: 100%;
+    border-radius: 50px;
+    transition: width 0.3s ease-in-out;
+}
+
+.mission-claim-btn {
+    background-color: #2e7d32;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.mission-claim-btn:hover {
+    background-color: #388e3c;
+}
+
+.mission-claimed {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+/* Power-up Upgrade Bars */
+.upgrade-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    gap: 2px;
+}
+
+.level-segment {
+    width: 20%;
+    height: 6px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+
+.level-segment.filled {
+    background-color: #ffd700;
+}
+
+.market-item.disabled-item {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
 }

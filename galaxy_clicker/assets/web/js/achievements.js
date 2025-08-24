@@ -9,7 +9,11 @@ const achievementsCloseBtn = document.getElementById('achievements-close');
 const sortAchievementsDropdownBtn = document.querySelector('.sort-achievements-dropdown');
 const sortAchievementsText = document.getElementById('sort-achievements-text');
 const sortAchievementsMenu = document.getElementById('sort-achievements-menu');
-const achievementCollectedInfo = document.getElementById('achievement-collected-info');
+const unlockedAchievementsCount = document.getElementById('unlocked-achievements-count');
+const maxAchievementsCount = document.getElementById('max-achievements-count');
+const unlockedTrophiesCount = document.getElementById('unlocked-trophies-count');
+const maxTrophiesCount = document.getElementById('max-trophies-count');
+
 
 let achievementsData = [];
 let gameData;
@@ -28,14 +32,10 @@ const renderCollectedInfo = () => {
     const collectedTrophies = validUnlockedAchievements.reduce((sum, achievement) => sum + achievement.trophy_reward, 0);
     const maxTrophies = achievementsData.reduce((sum, achievement) => sum + achievement.trophy_reward, 0);
 
-    achievementCollectedInfo.innerHTML = `
-        <span style="font-style: italic; font-size: 1.1em; color: #94a3b8;">
-            ${unlockedCount} / ${totalAchievements} UNLOCKED
-        </span>
-        <span style="font-style: italic; font-size: 0.8em; color: #4b5563; margin-left: 0.5em;">
-            ${collectedTrophies} / ${maxTrophies} TROPHIES
-        </span>
-    `;
+    if (unlockedAchievementsCount) unlockedAchievementsCount.textContent = unlockedCount;
+    if (maxAchievementsCount) maxAchievementsCount.textContent = totalAchievements;
+    if (unlockedTrophiesCount) unlockedTrophiesCount.textContent = collectedTrophies;
+    if (maxTrophiesCount) maxTrophiesCount.textContent = maxTrophies;
 };
 
 // Function to sort achievements based on the selected criteria

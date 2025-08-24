@@ -4,7 +4,7 @@ import { showAchievementsModal, hideAchievementsModal, renderAchievements } from
 import { showTutorialModal, hideTutorialModal } from './tutorial.js';
 import { showRulesModal, hideRulesModal } from './rules.js';
 
-const VERSION = "1.00";
+const VERSION = "1.10";
 
 // DOM Elements
 const loadingScreen = document.getElementById('loading-screen');
@@ -132,6 +132,107 @@ const getOpenModal = () => {
     }
     return null;
 };
+
+// Function to generate a random 6-digit alphanumeric code
+const generateValidationCode = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    for (let i = 0; i < 6; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+};
+
+// Function to generate and "encrypt" a Device ID
+const generateDeviceID = () => {
+    // Use Base64 for a simple form of "encryption"
+    const deviceId = `device-${Date.now()}-${Math.floor(Math.random() * 1000000)}`;
+    const encodedId = btoa(deviceId);
+    return {
+        plain: deviceId,
+        encoded: encodedId
+    };
+};
+
+// Check if device ID and validation code already exist in local storage
+let deviceIdData = JSON.parse(localStorage.getItem('deviceIdData'));
+let validationCode = localStorage.getItem('validationCode');
+
+if (!deviceIdData || !validationCode) {
+    deviceIdData = generateDeviceID();
+    validationCode = generateValidationCode();
+    localStorage.setItem('deviceIdData', JSON.stringify(deviceIdData));
+    localStorage.setItem('validationCode', validationCode);
+}
+
+// DOM Elements for Device ID feature
+const deviceIdModal = document.getElementById('device-id-modal');
+const showDeviceIdCodeBtn = document.getElementById('show-device-id-code-btn');
+const validationCodeDisplay = document.getElementById('validation-code-display');
+const copyCodeBtn = document.getElementById('copy-code-btn');
+const validationInput = document.getElementById('validation-input');
+const submitValidationBtn = document.getElementById('submit-validation-btn');
+const encryptedDeviceIdDisplay = document.getElementById('encrypted-device-id');
+const deviceIdDisplay = document.getElementById('device-id-display');
+const closeDeviceIdModalBtn = document.getElementById('close-device-id-modal');
+
+// Functions to show and hide the modal
+const showDeviceIdModal = () => {
+    if (deviceIdModal) {
+        deviceIdModal.classList.remove('hidden');
+    }
+};
+
+const hideDeviceIdModal = () => {
+    if (deviceIdModal) {
+        deviceIdModal.classList.add('hidden');
+    }
+};
+
+// Initialize with the encrypted ID
+if (encryptedDeviceIdDisplay) {
+    encryptedDeviceIdDisplay.textContent = deviceIdData.encoded;
+}
+
+// Event Listeners
+if (showDeviceIdCodeBtn) {
+    showDeviceIdCodeBtn.addEventListener('click', () => {
+        if (validationCodeDisplay) validationCodeDisplay.textContent = validationCode;
+        showDeviceIdModal();
+    });
+}
+
+if (closeDeviceIdModalBtn) {
+    closeDeviceIdModalBtn.addEventListener('click', hideDeviceIdModal);
+}
+
+if (copyCodeBtn) {
+    copyCodeBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(validationCode)
+            .then(() => {
+                alert("Validation code copied to clipboard!");
+            })
+            .catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+    });
+}
+
+if (submitValidationBtn) {
+    submitValidationBtn.addEventListener('click', () => {
+        if (validationInput.value.toUpperCase() === validationCode) {
+            if (deviceIdDisplay) {
+                deviceIdDisplay.textContent = deviceIdData.plain;
+                deviceIdDisplay.classList.remove('hidden');
+                encryptedDeviceIdDisplay.classList.add('hidden');
+            }
+            alert("Device ID revealed!");
+            hideDeviceIdModal();
+        } else {
+            alert("Incorrect code.");
+        }
+    });
+}
 
 const transitionModals = (modalId, showFunction, ...args) => {
     const openModal = getOpenModal();
